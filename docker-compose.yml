@@ -1,0 +1,21 @@
+networks:
+  backend:
+
+
+volumes:
+  database:
+    driver: local
+
+services:
+  backend:
+    container_name: books_repo_app
+    build:
+      context: .
+      target: local
+    volumes:
+      - ./books_repo_fast_api:/app/books_repo_fast_api
+    networks:
+      - backend
+    ports:
+      - 8000:8000
+      - 5678:5678 # Debugging port
