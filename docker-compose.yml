@@ -13,7 +13,7 @@ services:
       context: .
       target: local
     volumes:
-      - ./books_repo_fast_api:/app/books_repo_fast_api
+      - ./src:/app/books_repo_fast_api/
     networks:
       - backend
     ports:

@@ -27,7 +27,7 @@ FROM base as local
 
 VOLUME [ "/app/" ]
 
-WORKDIR /app
+WORKDIR /app/books_repo_fast_api
 
-ENTRYPOINT ["python3", "-m", "debugpy", "--listen", "0.0.0.0:5678", "-m", "uvicorn", "books_repo_fast_api.main:app","--reload" ,"--host", "0.0.0.0", "--port", "8000"]
+ENTRYPOINT ["python3", "-m", "debugpy", "--listen", "0.0.0.0:5678", "-m", "uvicorn", "main:app","--reload" ,"--host", "0.0.0.0", "--port", "8000"]
 
