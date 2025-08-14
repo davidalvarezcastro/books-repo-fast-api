@@ -1,3 +1,5 @@
+import uuid
+
 import attrs
 
 from books_repo_fast_api.domain.models.base_model import BaseModel
@@ -7,6 +9,7 @@ from books_repo_fast_api.domain.models.base_model import BaseModel
 class Book(BaseModel):
     title: str
     author: str
-    description: str
-    rating: int
-    published_date: int
+    category: str
+
+    def __attrs_post_init__(self):
+        self.id = str(uuid.uuid4())

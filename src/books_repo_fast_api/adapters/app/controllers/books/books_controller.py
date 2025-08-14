@@ -14,7 +14,7 @@ from books_repo_fast_api.domain.services.books.queries.get_books import GetBooks
 
 class GetBooksFiltersAPI(ConversionAPIDomain):
     author: str | None = None
-    rating: int | None = None
+    category: str | None = None
 
 
 @attrs.define
@@ -24,10 +24,10 @@ class BooksController(BaseController):
             "/",
             status_code=status.HTTP_200_OK,
         )
-        def get_users(
+        def get_books(
             body: PaginationFiltersAPI[GetBooksFiltersAPI],
             books_service: Annotated[BooksService, Depends(get_books_service)],
         ) -> PaginationResultAPI[BookResultAPI]:
             get_books_query = body.to_domain(GetBooksQuery)
-            users = books_service.get_books(get_books_query=get_books_query)
-            return PaginationResultAPI.from_domain(users)
+            books = books_service.get_books(get_books_query=get_books_query)
+            return PaginationResultAPI.from_domain(books)

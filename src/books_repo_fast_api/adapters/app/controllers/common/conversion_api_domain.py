@@ -20,7 +20,7 @@ class ConversionAPIDomain(BaseModel):
         if not isinstance(obj_value, ConversionAPIDomain):
             return obj_value
 
-        # Ex: GetUsersQueryFilters | None we are interested to pick the first type to convert
+        # Ex: GetBooksQueryFilters | None we are interested to pick the first type to convert
         next_conversion_type = conversion_type.__annotations__[obj_attr].__args__[0]
 
         return obj_value.to_domain(next_conversion_type)

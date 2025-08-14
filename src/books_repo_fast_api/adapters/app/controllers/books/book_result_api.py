@@ -7,6 +7,4 @@ class BookResultAPI(ConversionAPIDomain):
     id: uuid.UUID
     title: str
     author: str
-    description: str
-    rating: int
-    published_date: int
+    category: str

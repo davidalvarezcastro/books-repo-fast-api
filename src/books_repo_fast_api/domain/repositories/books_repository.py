@@ -1,8 +1,11 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
+
+from books_repo_fast_api.adapters.repositories.repository_base import RepositoryBase
+from books_repo_fast_api.domain.models.book import Book
 
 
-class AbstractBooksRepository(ABC):
+class AbstractBooksRepository(RepositoryBase[Book]):
     @abstractmethod
-    def get_all_books(self):
-        """Retrieve all books from the repository."""
+    def get_by_title(self, title: str) -> Book:
+        """Retrieve book by title."""
         raise NotImplementedError

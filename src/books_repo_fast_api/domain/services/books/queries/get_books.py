@@ -1,3 +1,5 @@
+import logging
+
 import attr
 
 from books_repo_fast_api.adapters.repositories.data_context import DataContext
@@ -10,7 +12,7 @@ from books_repo_fast_api.domain.services.common.pagination_dto import Pagination
 @attr.define
 class GetBooksQueryFilters(FiltersBase):
     author: str | None = attr.field(default=None)
-    rating: int | None = attr.field(default=None)
+    category: str | None = None
 
 
 @attr.define
@@ -30,7 +32,7 @@ class GetBooksQueryHandler(CommandHandlerBase):
             offset=command.offset,
             limit=command.items,
         )
-        total_items = self.data_context.books_repo.count(filters=command.filters)
 
+        total_items = self.data_context.books_repo.count(filters=command.filters)
         books_dto = [BookDTO.from_model(book) for book in books]
         return PaginationDTO(page=command.page, page_items=len(books_dto), total_items=total_items, items=books_dto)

@@ -1,7 +1,7 @@
 [project]
 name = "books-repo-fast-api"
 version = "0.1.0"
-description = "fasl api udemy course"
+description = "Books Fast Api using Adapter/Domain Pattern (no database connection)"
 authors = [{ name = "davalv", email = "davidac0291@gmail.com" }]
 readme = "README.md"
 requires-python = ">=3.12"
